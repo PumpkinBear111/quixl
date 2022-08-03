@@ -4,7 +4,7 @@ from PIL import Image
 
 import _quixl
 
-size = 8
+size = 16
 screen = pygame.display.set_mode((787, 512))
 pygame.display.set_caption("quixl")
 
@@ -26,12 +26,16 @@ print(art)
 mousedown = False
 rightmousedown = False
 
-colorSelection = (0,50,50)
+colorSelection = (0,0,0)
+
+showMiddle = False
+showGrid = False
+showAlpha = True
 
 while running:
     pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
 
-    _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize)
+    _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
     _quixl.drawUI(screen, colorSelection)
     _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
 
@@ -78,13 +82,76 @@ while running:
                     else:
                         art[i] = img[x,y]
                 print("Image loaded")
-            if (event.key == pygame.K_n):
+            if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE):
                 i = -1
                 for color in art:
                     i += 1
                     art[i] = (-1, -1, -1)
-                print("Cleared")
+                print("New")
             if (event.key == pygame.K_ESCAPE): running = False
+            if (event.key == pygame.K_1):
+                size = 4
+                art = [()] * (size * size)
+                pixelDisplaySize = 512/size
+
+                i = -1
+                for color in art:
+                    i += 1
+                    art[i] = (-1, -1, -1)
+                print("New 4x4")
+            if (event.key == pygame.K_2):
+                size = 8
+                art = [()] * (size * size)
+                pixelDisplaySize = 512/size
+
+                i = -1
+                for color in art:
+                    i += 1
+                    art[i] = (-1, -1, -1)
+                print("New 8x8")
+            if (event.key == pygame.K_3):
+                size = 16
+                art = [()] * (size * size)
+                pixelDisplaySize = 512/size
+
+                i = -1
+                for color in art:
+                    i += 1
+                    art[i] = (-1, -1, -1)
+                print("New 16x16")
+            if (event.key == pygame.K_4):
+                size = 32
+                art = [()] * (size * size)
+                pixelDisplaySize = 512/size
+
+                i = -1
+                for color in art:
+                    i += 1
+                    art[i] = (-1, -1, -1)
+                print("New 32x32")
+            if (event.key == pygame.K_5):
+                size = 64
+                art = [()] * (size * size)
+                pixelDisplaySize = 512/size
+
+                i = -1
+                for color in art:
+                    i += 1
+                    art[i] = (-1, -1, -1)
+                print("New 64x64")
+            if (event.key == pygame.K_6):
+                size = 128
+                art = [()] * (size * size)
+                pixelDisplaySize = 512/size
+
+                i = -1
+                for color in art:
+                    i += 1
+                    art[i] = (-1, -1, -1)
+                print("New 128x128")
+            if (event.key == pygame.K_t): showMiddle = not showMiddle
+            if (event.key == pygame.K_g): showGrid = not showGrid
+            #if (event.key == pygame.K_a): showAlpha = not showAlpha
     if mousedown:
         x, y = pygame.mouse.get_pos()
         if (x <= 511):
@@ -98,6 +165,7 @@ while running:
                 if 85 >= y >= 10: colorSelection = (x-522,cg,cb)
                 if 160 >= y >= 85: colorSelection = (cr,x-522,cb)
                 if 235 >= y >= 160: colorSelection = (cr,cg,x-522)
+                if 310 >= y >= 235: colorSelection = (x-522,x-522,x-522)
     if rightmousedown:
         x, y = pygame.mouse.get_pos()
         if (x <= 511):
