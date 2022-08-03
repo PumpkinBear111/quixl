@@ -1,7 +1,6 @@
-import pygame
-
 # Screen Draw
 def drawPixelGrid(screen, art, size, pixelDisplaySize):
+    import pygame
     x = -1
     y = 0
     for pixel in art:
@@ -24,7 +23,8 @@ def drawPixelGrid(screen, art, size, pixelDisplaySize):
         else:
             pygame.draw.rect(screen, pixel, pygame.Rect(pixelDisplaySize * x, pixelDisplaySize * y, pixelDisplaySize,
                                                         pixelDisplaySize))
-def drawUI(screen):
+def drawUI(screen, currentColor):
+    import pygame
     pygame.draw.rect(screen, (200,200,200), pygame.Rect(512, 0, 1, 512))
 
     pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(512 + 10 - 2, 8, 259, 304))
@@ -32,6 +32,35 @@ def drawUI(screen):
         pygame.draw.rect(screen, (i, 0, 0), pygame.Rect(512+10+i, 10, 1, 75))
         pygame.draw.rect(screen, (0, i, 0), pygame.Rect(512+10+i, 85, 1, 75))
         pygame.draw.rect(screen, (0, 0, i), pygame.Rect(512+10+i, 160, 1, 75))
-        pygame.draw.rect(screen, (i, i, i), pygame.Rect(512+10+i, 235, 1, 75))
+        #pygame.draw.rect(screen, (i, i, i), pygame.Rect(512+10+i, 235, 1, 75))
 
-# Input
+    cr, cg, cb = currentColor
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cr, 10, 2, 75))
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cg, 85, 2, 75))
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 160, 2, 75))
+def drawColorOverlay(screen, colorSelection, mousePos):
+    import pygame
+    x, y = mousePos
+    pygame.draw.circle(screen, colorSelection, (x+30, y+30), 10)
+
+# Image Files
+def saveImage(art, size):
+    from PIL import Image
+    import pygame
+
+    x = -1
+    y = 0
+    img = Image.new('RGBA', (size, size))
+    for pixel in art:
+        x += 1
+        if x >= size:
+            x = 0
+            y += 1
+        if (pixel[0] == -1):
+            img.putpixel((x, y), (0, 0, 0, 0))
+        else:
+            img.putpixel((x, y), pixel)
+    img.save('quixl.png')
+    print("Image saved")
+
+    pygame.display.set_icon(pygame.image.load('quixl.png'))
