@@ -1,8 +1,10 @@
 import math
+from random import random
+
 import pygame
 from PIL import Image
 
-import _quixl
+import _quixl, _watermark
 
 size = 16
 screen = pygame.display.set_mode((787, 512))
@@ -31,6 +33,9 @@ colorSelection = (0,0,0)
 showMiddle = False
 showGrid = False
 showAlpha = True
+showWatermark = False
+
+_watermark.init()
 
 while running:
     pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
@@ -38,6 +43,9 @@ while running:
     _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
     _quixl.drawUI(screen, colorSelection)
     _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
+
+    if showWatermark:
+        _watermark.draw(screen)
 
     pygame.display.flip()
 
@@ -82,7 +90,7 @@ while running:
                     else:
                         art[i] = img[x,y]
                 print("Image loaded")
-            if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE):
+            if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x):
                 i = -1
                 for color in art:
                     i += 1
@@ -151,6 +159,11 @@ while running:
                 print("New 128x128")
             if (event.key == pygame.K_t): showMiddle = not showMiddle
             if (event.key == pygame.K_g): showGrid = not showGrid
+            if (event.key == pygame.K_j):
+                print("Jumbling")
+                for index in range(size*size):
+                    art[index] = (round(random()*255),round(random()*255),round(random()*255))
+            if (event.key == pygame.K_w): showWatermark = not showWatermark
             #if (event.key == pygame.K_a): showAlpha = not showAlpha
     if mousedown:
         x, y = pygame.mouse.get_pos()

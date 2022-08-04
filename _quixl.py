@@ -1,3 +1,5 @@
+print("Do not run '_quixl.py' to start Quixl. Instead run main.py")
+
 # Screen Draw
 def drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha):
     import pygame
@@ -44,7 +46,6 @@ def drawUI(screen, currentColor):
     pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cg, 85, 2, 75))
     pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 160, 2, 75))
     if (cr == cg == cb): pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 235, 2, 75))
-
 def drawColorOverlay(screen, colorSelection, mousePos):
     import pygame
     x, y = mousePos
