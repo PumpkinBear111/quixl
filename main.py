@@ -88,8 +88,11 @@ while running:
                     if (img[x,y] == (0,0,0,0)):
                         art[i] = (-1,-1,-1)
                     else:
-                        art[i] = img[x,y]
+                        r,g,b,a = img[x,y]
+                        art[i] = (r,g,b)
+
                 print("Image loaded")
+                print(art)
             if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x):
                 i = -1
                 for color in art:
@@ -97,6 +100,7 @@ while running:
                     art[i] = (-1, -1, -1)
                 print("New")
             if (event.key == pygame.K_ESCAPE): running = False
+
             if (event.key == pygame.K_1):
                 size = 4
                 art = [()] * (size * size)
@@ -157,6 +161,7 @@ while running:
                     i += 1
                     art[i] = (-1, -1, -1)
                 print("New 128x128")
+
             if (event.key == pygame.K_t): showMiddle = not showMiddle
             if (event.key == pygame.K_g): showGrid = not showGrid
             if (event.key == pygame.K_j):
