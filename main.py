@@ -147,6 +147,13 @@ while running:
                 for index in range(size*size):
                     art[index] = (round(random()*255),round(random()*255),round(random()*255))
             if (event.key == pygame.K_w): showWatermark = not showWatermark
+
+            if (event.key == pygame.K_RIGHTBRACKET):
+                r,g,b = colorSelection
+                colorSelection = (min(r+10, 255),min(g+10, 255),min(b+10, 255))
+            if (event.key == pygame.K_LEFTBRACKET):
+                r,g,b = colorSelection
+                colorSelection = (max(r-10, 0),max(g-10, 0),max(b-10, 0))
             #if (event.key == pygame.K_a): showAlpha = not showAlpha
     if mousedown:
         x, y = pygame.mouse.get_pos()
