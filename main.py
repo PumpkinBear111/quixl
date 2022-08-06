@@ -39,6 +39,18 @@ showWatermark = False
 
 _watermark.init()
 
+def createNew(width):
+    global size, art, pixelDisplaySize
+    size = width
+    art = [()] * (size * size)
+    pixelDisplaySize = 512 / size
+
+    i = -1
+    for color in art:
+        i += 1
+        art[i] = (-1, -1, -1)
+    print(f"New {width}x{width}")
+
 while running:
     pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
 
@@ -71,74 +83,15 @@ while running:
                     art, size, pixelDisplaySize = _quixl.openImage()
                 except(FileNotFoundError):
                     print("quixl.png could not be found")
-            if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x):
-                i = -1
-                for color in art:
-                    i += 1
-                    art[i] = (-1, -1, -1)
-                print("New")
+            if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x): createNew(size)
             if (event.key == pygame.K_ESCAPE): running = False
 
-            if (event.key == pygame.K_1):
-                size = 4
-                art = [()] * (size * size)
-                pixelDisplaySize = 512/size
-
-                i = -1
-                for color in art:
-                    i += 1
-                    art[i] = (-1, -1, -1)
-                print("New 4x4")
-            if (event.key == pygame.K_2):
-                size = 8
-                art = [()] * (size * size)
-                pixelDisplaySize = 512/size
-
-                i = -1
-                for color in art:
-                    i += 1
-                    art[i] = (-1, -1, -1)
-                print("New 8x8")
-            if (event.key == pygame.K_3):
-                size = 16
-                art = [()] * (size * size)
-                pixelDisplaySize = 512/size
-
-                i = -1
-                for color in art:
-                    i += 1
-                    art[i] = (-1, -1, -1)
-                print("New 16x16")
-            if (event.key == pygame.K_4):
-                size = 32
-                art = [()] * (size * size)
-                pixelDisplaySize = 512/size
-
-                i = -1
-                for color in art:
-                    i += 1
-                    art[i] = (-1, -1, -1)
-                print("New 32x32")
-            if (event.key == pygame.K_5):
-                size = 64
-                art = [()] * (size * size)
-                pixelDisplaySize = 512/size
-
-                i = -1
-                for color in art:
-                    i += 1
-                    art[i] = (-1, -1, -1)
-                print("New 64x64")
-            if (event.key == pygame.K_6):
-                size = 128
-                art = [()] * (size * size)
-                pixelDisplaySize = 512/size
-
-                i = -1
-                for color in art:
-                    i += 1
-                    art[i] = (-1, -1, -1)
-                print("New 128x128")
+            if (event.key == pygame.K_1): createNew(4)
+            if (event.key == pygame.K_2): createNew(8)
+            if (event.key == pygame.K_3): createNew(16)
+            if (event.key == pygame.K_4): createNew(32)
+            if (event.key == pygame.K_5): createNew(64)
+            if (event.key == pygame.K_6): createNew(128)
 
             if (event.key == pygame.K_t): showMiddle = not showMiddle
             if (event.key == pygame.K_g): showGrid = not showGrid
