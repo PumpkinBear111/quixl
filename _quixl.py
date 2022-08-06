@@ -1,3 +1,5 @@
+import math
+
 print("Do not run '_quixl.py' to start Quixl. Instead run main.py")
 
 # Screen Draw
@@ -103,6 +105,7 @@ def drawComplex(screen, font, colorSelection):
     rgb = font.render(f"rgb({r},{g},{b})", True, (160,160,160))
     screen.blit(rgb, (522,300))
 
+# Input
 def colorPresetSelection(currentColor):
     import pygame
     x, y = pygame.mouse.get_pos()
@@ -123,6 +126,34 @@ def colorPresetSelection(currentColor):
         if 642 <= x <= 692: return (255,0,255)
 
     return currentColor
+def colorSliderInput(currentColor):
+    import pygame
+    x, y = pygame.mouse.get_pos()
+    if 522 <= x <= 777:
+        cr, cg, cb = currentColor
+        if 85 >= y >= 10: currentColor = (x - 522, cg, cb)
+        if 160 >= y >= 85: currentColor = (cr, x - 522, cb)
+        if 235 >= y >= 160: currentColor = (cr, cg, x - 522)
+        if 310 >= y >= 235: currentColor = (x - 522, x - 522, x - 522)
+    return currentColor
+def leftClickDraw(art, size, colorSelection):
+    import pygame
+    x, y = pygame.mouse.get_pos()
+    if (x <= 511):
+        x = math.floor(x / (512 / size))
+        y = math.floor(y / (512 / size))
+        index = x + size * y
+        art[index] = colorSelection
+    return art
+def rightClickErase(art, size):
+    import pygame
+    x, y = pygame.mouse.get_pos()
+    if (x <= 511):
+        x = math.floor(x / (512 / size))
+        y = math.floor(y / (512 / size))
+        index = x + size * y
+        art[index] = (-1, -1, -1)
+    return art
 
 # Image Files
 def saveImage(art, size):

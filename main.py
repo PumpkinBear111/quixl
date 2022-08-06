@@ -113,23 +113,6 @@ while running:
             #if (event.key == pygame.K_a): showAlpha = not showAlpha
     if mousedown:
         colorSelection = _quixl.colorPresetSelection(colorSelection)
-        x, y = pygame.mouse.get_pos()
-        if (x <= 511):
-            x = math.floor(x / (512 / size))
-            y = math.floor(y / (512 / size))
-            index = x + size * y
-            art[index] = colorSelection
-        else:
-            if 522 <= x <= 777:
-                cr, cg, cb = colorSelection
-                if 85 >= y >= 10: colorSelection = (x-522,cg,cb)
-                if 160 >= y >= 85: colorSelection = (cr,x-522,cb)
-                if 235 >= y >= 160: colorSelection = (cr,cg,x-522)
-                if 310 >= y >= 235: colorSelection = (x-522,x-522,x-522)
-    if rightmousedown:
-        x, y = pygame.mouse.get_pos()
-        if (x <= 511):
-            x = math.floor(x / (512 / size))
-            y = math.floor(y / (512 / size))
-            index = x + size * y
-            art[index] = (-1,-1,-1)
+        colorSelection = _quixl.colorSliderInput(colorSelection)
+        art = _quixl.leftClickDraw(art, size, colorSelection)
+    if rightmousedown: art = _quixl.rightClickErase(art, size)
