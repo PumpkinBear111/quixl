@@ -2,7 +2,6 @@ import math
 from random import random
 
 import pygame
-from PIL import Image
 
 import _quixl, _watermark
 
@@ -113,6 +112,7 @@ while running:
                 colorSelection = (max(r-10, 0),max(g-10, 0),max(b-10, 0))
             #if (event.key == pygame.K_a): showAlpha = not showAlpha
     if mousedown:
+        colorSelection = _quixl.colorPresetSelection(colorSelection)
         x, y = pygame.mouse.get_pos()
         if (x <= 511):
             x = math.floor(x / (512 / size))
