@@ -37,6 +37,9 @@ showGrid = False
 showAlpha = True
 showWatermark = False
 
+complexMode = False
+complexFont = pygame.font.SysFont("Roboto-Regular.ttf", 16)
+
 _watermark.init()
 
 def createNew(width):
@@ -57,9 +60,8 @@ while running:
     _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
     _quixl.drawUI(screen, colorSelection)
     _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
-
-    if showWatermark:
-        _watermark.draw(screen)
+    if showWatermark: _watermark.draw(screen)
+    if complexMode: _quixl.drawComplex(screen, complexFont, colorSelection)
 
     pygame.display.flip()
 
@@ -100,6 +102,8 @@ while running:
                 for index in range(size*size):
                     art[index] = (round(random()*255),round(random()*255),round(random()*255))
             if (event.key == pygame.K_w): showWatermark = not showWatermark
+
+            if (event.key == pygame.K_c): complexMode = not complexMode
 
             if (event.key == pygame.K_RIGHTBRACKET):
                 r,g,b = colorSelection

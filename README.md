@@ -5,6 +5,10 @@ A pixel art maker written in python.
 I forgot pixel had an 'e' in it so I thought qui(ck-pi)xl
 but I like the name so I'm not changing it.
 
+## To run quixl:
+pygame and Pillow are required  
+Then, just run **main.py**
+
 ## How to Draw
 Pixel art is simple with quixl!  
 > **Left click** to draw  
@@ -45,4 +49,5 @@ This will clear your current artwork and resize
 > Toggle Middle - **t**  
 > Toggle Grid - **g**  
 > Jumble - **j**  
-> Toggle Watermark - **w**
+> Toggle Watermark - **w**  
+> Toggle Complex Color Mode - **c**  

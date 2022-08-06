@@ -53,6 +53,11 @@ def drawColorOverlay(screen, colorSelection, mousePos):
     pygame.draw.circle(screen, (255,255,255), (min(x+30, w-12), min(y+30, 500)), 12)
     pygame.draw.circle(screen, (0,0,0), (min(x+30, w-12), min(y+30, 500)), 11)
     pygame.draw.circle(screen, colorSelection, (min(x+30, w-12), min(y+30, 500)), 10)
+def drawComplex(screen, font, colorSelection):
+    r,g,b = colorSelection
+    rgb = font.render(f"rgb({r},{g},{b})", True, (160,160,160))
+    screen.blit(rgb, (522,300))
+
 
 # Image Files
 def saveImage(art, size):
