@@ -24,12 +24,10 @@ We have 4 sliders. R, G, B, Grayscale.
 The first 3 are self-explanatory, for selecting RGB colors.
 The grayscale slider will control R, G, and B at the same time for easy selection of blacks, whites, and grays.
   
-### Color Commands:
-> Lighten - **]**  
-> Darken - **[**
+We also have some preset colors. Just click on them to select the color! These are not customizable at the moment.
 
 ## Commands/Keys:
-The key(s) to press is in bold
+The key(s) to press are in bold
 ### Basic Commands
 > Save - **s**  
 > Open - **o**  
@@ -45,7 +43,11 @@ This will clear your current artwork and resize
 > 64x64 - **5**  
 > 128x128 - **6**  
 
-### Fun/Utility Commands
+### Color Commands:
+> Lighten - **]**  
+> Darken - **[**
+
+### Other Commands
 > Toggle Middle - **t**  
 > Toggle Grid - **g**  
 > Jumble - **j**  

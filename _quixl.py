@@ -97,6 +97,9 @@ def drawColorOverlay(screen, colorSelection, mousePos):
     import pygame
     x, y = mousePos
     w,h = pygame.display.get_window_size()
+
+    pygame.draw.circle(screen, (0,0,0), (x+1, y+1), 1)
+
     pygame.draw.circle(screen, (255,255,255), (min(x+30, w-12), min(y+30, 500)), 12)
     pygame.draw.circle(screen, (0,0,0), (min(x+30, w-12), min(y+30, 500)), 11)
     pygame.draw.circle(screen, colorSelection, (min(x+30, w-12), min(y+30, 500)), 10)
