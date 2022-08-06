@@ -75,3 +75,34 @@ def saveImage(art, size):
     print("Image saved")
 
     pygame.display.set_icon(pygame.image.load('quixl.png'))
+def openImage():
+    import pygame
+    from PIL import Image
+
+    x = -1
+    y = 0
+    i = -1
+
+    img = Image.open("quixl.png")
+    pygame.display.set_icon(pygame.image.load('quixl.png'))
+
+    imgw, imgh = img.size
+    print(imgw)
+    size = imgw
+    art = [()] * (size * size)
+    pixelDisplaySize = 512 / size
+
+    img = img.load()
+    for pixel in art:
+        i += 1
+        x += 1
+        if x >= size:
+            x = 0
+            y += 1
+        if (img[x, y] == (0, 0, 0, 0)):
+            art[i] = (-1, -1, -1)
+        else:
+            r, g, b, a = img[x, y]
+            art[i] = (r, g, b)
+
+    return (art, size, pixelDisplaySize)

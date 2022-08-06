@@ -27,6 +27,7 @@ File names are a planned feature.
 > Exit - ESCAPE  
 
 ### Change Size Commands
+This will clear your current artwork and resize
 > 4x4 - '1'  
 > 8x8 - '2'  
 > 16x16 - '3'  
@@ -37,5 +38,5 @@ File names are a planned feature.
 ### Fun/Utility Commands
 > Toggle Middle - 't'  
 > Toggle Grid - 'g'  
-> Jumble - 'j'
+> Jumble - 'j'  
 > Toggle Watermark - 'w'

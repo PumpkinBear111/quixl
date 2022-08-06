@@ -6,6 +6,8 @@ from PIL import Image
 
 import _quixl, _watermark
 
+pygame.init()
+
 size = 16
 screen = pygame.display.set_mode((787, 512))
 pygame.display.set_caption("quixl")
@@ -65,34 +67,10 @@ while running:
         if event.type == pygame.KEYDOWN:
             if (event.key == pygame.K_s): _quixl.saveImage(art, size)
             if (event.key == pygame.K_o):
-                x = -1
-                y = 0
-                i = -1
-
-                img = Image.open("quixl.png")
-                pygame.display.set_icon(pygame.image.load('quixl.png'))
-
-                imgw, imgh = img.size
-                print(imgw)
-                size = imgw
-                art = [()] * (size * size)
-                pixelDisplaySize = 512/size
-
-                img = img.load()
-                for pixel in art:
-                    i += 1
-                    x += 1
-                    if x >= size:
-                        x = 0
-                        y += 1
-                    if (img[x,y] == (0,0,0,0)):
-                        art[i] = (-1,-1,-1)
-                    else:
-                        r,g,b,a = img[x,y]
-                        art[i] = (r,g,b)
-
-                print("Image loaded")
-                print(art)
+                try:
+                    art, size, pixelDisplaySize = _quixl.openImage()
+                except(FileNotFoundError):
+                    print("quixl.png could not be found")
             if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x):
                 i = -1
                 for color in art:

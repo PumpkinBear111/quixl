@@ -3,7 +3,6 @@ watermark_white = None
 
 def init():
     import pygame
-    pygame.init()
     global watermark_black
     global watermark_white
     watermark_font = pygame.font.SysFont("Roboto-Regular.ttf", 70)
