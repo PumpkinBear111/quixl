@@ -112,11 +112,14 @@ def optimizedScreenClear(screen, mousepos):
     mx, my = mousepos
     import pygame
     global lastMousePos
+
     lmx, lmy = lastMousePos
+    if (abs(lmx-mx) >= 30 or abs(lmy-my) >= 30): pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
+    lastMousePos = mousepos
 
-    if (abs(lmx-mx) >= 50 or abs(lmy-my) >= 50): pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
+    if mx < 450: return
 
-    pygame.draw.rect(screen, (255,255,255), pygame.Rect(mx-50, my-50, 100, 100))
+    pygame.draw.rect(screen, (255,255,255), pygame.Rect(lmx-50, lmy-50, 100, 100))
 
 # Input
 def colorPresetSelection(currentColor):

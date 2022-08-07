@@ -55,6 +55,8 @@ def createNew(width):
 
 pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
 
+screenReset = False
+
 while running:
 
     _quixl.optimizedScreenClear(screen, pygame.mouse.get_pos())
@@ -63,6 +65,8 @@ while running:
     _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
     if showWatermark: _watermark.draw(screen)
     if complexMode: _quixl.drawComplex(screen, complexFont, colorSelection)
+
+    screenReset = False
 
     pygame.display.flip()
 
@@ -114,6 +118,7 @@ while running:
                 colorSelection = (max(r-10, 0),max(g-10, 0),max(b-10, 0))
             #if (event.key == pygame.K_a): showAlpha = not showAlpha
     if mousedown:
+        screenReset = True
         colorSelection = _quixl.colorPresetSelection(colorSelection)
         colorSelection = _quixl.colorSliderInput(colorSelection)
         art = _quixl.leftClickDraw(art, size, colorSelection)
