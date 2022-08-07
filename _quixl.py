@@ -1,6 +1,7 @@
 import math
 
 print("Do not run '_quixl.py' to start Quixl. Instead run main.py")
+lastMousePos = (0,0)
 
 # Screen Draw
 def drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha):
@@ -107,6 +108,15 @@ def drawComplex(screen, font, colorSelection):
     r,g,b = colorSelection
     rgb = font.render(f"rgb({r},{g},{b})", True, (160,160,160))
     screen.blit(rgb, (522,300))
+def optimizedScreenClear(screen, mousepos):
+    mx, my = mousepos
+    import pygame
+    global lastMousePos
+    lmx, lmy = lastMousePos
+
+    if (abs(lmx-mx) >= 50 or abs(lmy-my) >= 50): pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
+
+    pygame.draw.rect(screen, (255,255,255), pygame.Rect(mx-50, my-50, 100, 100))
 
 # Input
 def colorPresetSelection(currentColor):

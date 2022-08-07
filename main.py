@@ -53,11 +53,13 @@ def createNew(width):
         art[i] = (-1, -1, -1)
     print(f"New {width}x{width}")
 
-while running:
-    pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
+pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
 
-    _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
+while running:
+
+    _quixl.optimizedScreenClear(screen, pygame.mouse.get_pos())
     _quixl.drawUI(screen, colorSelection)
+    _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
     _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
     if showWatermark: _watermark.draw(screen)
     if complexMode: _quixl.drawComplex(screen, complexFont, colorSelection)
