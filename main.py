@@ -1,5 +1,6 @@
 import math
 from random import random
+from threading import Thread
 
 import pygame
 
@@ -57,19 +58,24 @@ pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),scree
 
 screenReset = False
 
+def drawUpdate():
+    global screen, colorSelection, art, size, pixelDisplaySize, showMiddle, showGrid, complexFont, screenReset, running
+
+    while running:
+        _quixl.optimizedScreenClear(screen, pygame.mouse.get_pos())
+        _quixl.drawUI(screen, colorSelection)
+        _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
+        if pygame.mouse.get_focused(): _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
+        if showWatermark: _watermark.draw(screen)
+        if complexMode: _quixl.drawComplex(screen, complexFont, colorSelection)
+
+        screenReset = False
+        pygame.display.flip()
+
+drawThread = Thread(target=drawUpdate)
+drawThread.start()
+
 while running:
-
-    _quixl.optimizedScreenClear(screen, pygame.mouse.get_pos())
-    _quixl.drawUI(screen, colorSelection)
-    _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
-    _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
-    if showWatermark: _watermark.draw(screen)
-    if complexMode: _quixl.drawComplex(screen, complexFont, colorSelection)
-
-    screenReset = False
-
-    pygame.display.flip()
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT: running = False
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: mousedown = True
