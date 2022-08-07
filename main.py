@@ -59,7 +59,7 @@ pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),scree
 screenReset = False
 
 def drawUpdate():
-    global screen, colorSelection, art, size, pixelDisplaySize, showMiddle, showGrid, complexFont, screenReset, running
+    global size, screen, pixelDisplaySize, running, art, mousedown, rightmousedown, colorSelection, showMiddle, showGrid, showAlpha, showWatermark, complexMode, complexFont, screenReset
 
     while running:
         _quixl.optimizedScreenClear(screen, pygame.mouse.get_pos())
@@ -71,7 +71,6 @@ def drawUpdate():
 
         screenReset = False
         pygame.display.flip()
-
 drawThread = Thread(target=drawUpdate)
 drawThread.start()
 
@@ -96,7 +95,9 @@ while running:
                     art, size, pixelDisplaySize = _quixl.openImage()
                 except(FileNotFoundError):
                     print("quixl.png could not be found")
-            if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x): createNew(size)
+            if (
+                    event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x): createNew(
+                size)
             if (event.key == pygame.K_ESCAPE): running = False
 
             if (event.key == pygame.K_1): createNew(4)
@@ -110,19 +111,19 @@ while running:
             if (event.key == pygame.K_g): showGrid = not showGrid
             if (event.key == pygame.K_j):
                 print("Jumbling")
-                for index in range(size*size):
-                    art[index] = (round(random()*255),round(random()*255),round(random()*255))
+                for index in range(size * size):
+                    art[index] = (round(random() * 255), round(random() * 255), round(random() * 255))
             if (event.key == pygame.K_w): showWatermark = not showWatermark
 
             if (event.key == pygame.K_c): complexMode = not complexMode
 
             if (event.key == pygame.K_RIGHTBRACKET):
-                r,g,b = colorSelection
-                colorSelection = (min(r+10, 255),min(g+10, 255),min(b+10, 255))
+                r, g, b = colorSelection
+                colorSelection = (min(r + 10, 255), min(g + 10, 255), min(b + 10, 255))
             if (event.key == pygame.K_LEFTBRACKET):
-                r,g,b = colorSelection
-                colorSelection = (max(r-10, 0),max(g-10, 0),max(b-10, 0))
-            #if (event.key == pygame.K_a): showAlpha = not showAlpha
+                r, g, b = colorSelection
+                colorSelection = (max(r - 10, 0), max(g - 10, 0), max(b - 10, 0))
+            # if (event.key == pygame.K_a): showAlpha = not showAlpha
     if mousedown:
         screenReset = True
         colorSelection = _quixl.colorPresetSelection(colorSelection)
