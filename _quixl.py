@@ -37,55 +37,56 @@ def drawUI(screen, currentColor):
     import pygame
     pygame.draw.rect(screen, (200,200,200), pygame.Rect(512, 0, 1, 512))
 
-    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(512 + 10 - 2, 8, 259, 304))
+    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(512 + 10 - 2, 8, 259, 184))
     for i in range(255):
-        pygame.draw.rect(screen, (i, 0, 0), pygame.Rect(512+10+i, 10, 1, 75))
-        pygame.draw.rect(screen, (0, i, 0), pygame.Rect(512+10+i, 85, 1, 75))
-        pygame.draw.rect(screen, (0, 0, i), pygame.Rect(512+10+i, 160, 1, 75))
-        pygame.draw.rect(screen, (i, i, i), pygame.Rect(512+10+i, 235, 1, 75))
+        pygame.draw.rect(screen, (i, 0, 0), pygame.Rect(512+10+i, 10, 1, 45))
+        pygame.draw.rect(screen, (0, i, 0), pygame.Rect(512+10+i, 55, 1, 45))
+        pygame.draw.rect(screen, (0, 0, i), pygame.Rect(512+10+i, 100, 1, 45))
+        pygame.draw.rect(screen, (i, i, i), pygame.Rect(512+10+i, 145, 1, 45))
 
     cr, cg, cb = currentColor
-    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cr, 10, 2, 75))
-    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cg, 85, 2, 75))
-    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 160, 2, 75))
-    if (cr == cg == cb): pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 235, 2, 75))
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cr, 10, 2, 45))
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cg, 55, 2, 45))
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 100, 2, 45))
+    if (cr == cg == cb): pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 145, 2, 45))
 
     border = (150,150,150)
+    height = 200
 
     # Color Presets
 
     # Grayscale Selection
-    pygame.draw.rect(screen, border, pygame.Rect(522, 320, 50, 50))
-    pygame.draw.rect(screen, (000,000,000), pygame.Rect(524, 322, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(522, height, 50, 50))
+    pygame.draw.rect(screen, (000,000,000), pygame.Rect(524, height+2, 46, 46))
 
-    pygame.draw.rect(screen, border, pygame.Rect(582, 320, 50, 50))
-    pygame.draw.rect(screen, (100,100,100), pygame.Rect(584, 322, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(582, height, 50, 50))
+    pygame.draw.rect(screen, (64,64,64), pygame.Rect(584, height+2, 46, 46))
 
-    pygame.draw.rect(screen, border, pygame.Rect(642, 320, 50, 50))
-    pygame.draw.rect(screen, (200,200,200), pygame.Rect(644, 322, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(642, height, 50, 50))
+    pygame.draw.rect(screen, (128,128,128), pygame.Rect(644, height+2, 46, 46))
 
-    pygame.draw.rect(screen, border, pygame.Rect(702, 320, 50, 50))
-    pygame.draw.rect(screen, (255,255,255), pygame.Rect(704, 322, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(702, height, 50, 50))
+    pygame.draw.rect(screen, (255,255,255), pygame.Rect(704, height+2, 46, 46))
 
     # RGB Full
-    pygame.draw.rect(screen, border, pygame.Rect(522, 380, 50, 50))
-    pygame.draw.rect(screen, (255,0,0), pygame.Rect(524, 382, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(522, height+60, 50, 50))
+    pygame.draw.rect(screen, (255,0,0), pygame.Rect(524, height+62, 46, 46))
 
-    pygame.draw.rect(screen, border, pygame.Rect(582, 380, 50, 50))
-    pygame.draw.rect(screen, (0,255,0), pygame.Rect(584, 382, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(582, height+60, 50, 50))
+    pygame.draw.rect(screen, (0,255,0), pygame.Rect(584, height+62, 46, 46))
 
-    pygame.draw.rect(screen, border, pygame.Rect(642, 380, 50, 50))
-    pygame.draw.rect(screen, (0,0,255), pygame.Rect(644, 382, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(642, height+60, 50, 50))
+    pygame.draw.rect(screen, (0,0,255), pygame.Rect(644, height+62, 46, 46))
 
     # RGB Combos
-    pygame.draw.rect(screen, border, pygame.Rect(522, 440, 50, 50))
-    pygame.draw.rect(screen, (255,255,0), pygame.Rect(524, 442, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(522, height+120, 50, 50))
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(524, height+122, 46, 46))
 
-    pygame.draw.rect(screen, border, pygame.Rect(582, 440, 50, 50))
-    pygame.draw.rect(screen, (0,255,255), pygame.Rect(584, 442, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(582, height+120, 50, 50))
+    pygame.draw.rect(screen, (0,255,255), pygame.Rect(584, height+122, 46, 46))
 
-    pygame.draw.rect(screen, border, pygame.Rect(642, 440, 50, 50))
-    pygame.draw.rect(screen, (255,0,255), pygame.Rect(644, 442, 46, 46))
+    pygame.draw.rect(screen, border, pygame.Rect(642, height+120, 50, 50))
+    pygame.draw.rect(screen, (255,0,255), pygame.Rect(644, height+122, 46, 46))
 
     # Transparent
     #pygame.draw.rect(screen, border, pygame.Rect(702, 380, 50, 110))
@@ -107,7 +108,7 @@ def drawColorOverlay(screen, colorSelection, mousePos):
 def drawComplex(screen, font, colorSelection):
     r,g,b = colorSelection
     rgb = font.render(f"rgb({r},{g},{b})", True, (160,160,160))
-    screen.blit(rgb, (522,300))
+    screen.blit(rgb, (522,180))
 def optimizedScreenClear(screen, mousepos):
     mx, my = mousepos
     import pygame
@@ -125,18 +126,18 @@ def optimizedScreenClear(screen, mousepos):
 def colorPresetSelection(currentColor):
     import pygame
     x, y = pygame.mouse.get_pos()
-    if y < 320: return currentColor
+    if y < 200: return currentColor
 
-    if 320 <= y <= 370:
+    if 200 <= y <= 250:
         if 522 <= x <= 572: return (0,0,0)
-        if 582 <= x <= 632: return (100,100,100)
-        if 642 <= x <= 692: return (200,200,200)
+        if 582 <= x <= 632: return (64,64,64)
+        if 642 <= x <= 692: return (128,128,128)
         if 702 <= x <= 752: return (255,255,255)
-    if 380 <= y <= 430:
+    if 260 <= y <= 310:
         if 522 <= x <= 572: return (255,0,0)
         if 582 <= x <= 632: return (0,255,0)
         if 642 <= x <= 692: return (0,0,255)
-    if 440 <= y <= 490:
+    if 320 <= y <= 370:
         if 522 <= x <= 572: return (255,255,0)
         if 582 <= x <= 632: return (0,255,255)
         if 642 <= x <= 692: return (255,0,255)
@@ -147,10 +148,10 @@ def colorSliderInput(currentColor):
     x, y = pygame.mouse.get_pos()
     if 522 <= x <= 777:
         cr, cg, cb = currentColor
-        if 85 >= y >= 10: currentColor = (x - 522, cg, cb)
-        if 160 >= y >= 85: currentColor = (cr, x - 522, cb)
-        if 235 >= y >= 160: currentColor = (cr, cg, x - 522)
-        if 310 >= y >= 235: currentColor = (x - 522, x - 522, x - 522)
+        if 55 >= y >= 10: currentColor = (x - 522, cg, cb)
+        if 100 >= y >= 55: currentColor = (cr, x - 522, cb)
+        if 145 >= y >= 100: currentColor = (cr, cg, x - 522)
+        if 190 >= y >= 145: currentColor = (x - 522, x - 522, x - 522)
     return currentColor
 def leftClickDraw(art, size, colorSelection):
     import pygame

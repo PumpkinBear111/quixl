@@ -95,9 +95,7 @@ while running:
                     art, size, pixelDisplaySize = _quixl.openImage()
                 except(FileNotFoundError):
                     print("quixl.png could not be found")
-            if (
-                    event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x): createNew(
-                size)
+            if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x): createNew(size)
             if (event.key == pygame.K_ESCAPE): running = False
 
             if (event.key == pygame.K_1): createNew(4)
@@ -111,8 +109,7 @@ while running:
             if (event.key == pygame.K_g): showGrid = not showGrid
             if (event.key == pygame.K_j):
                 print("Jumbling")
-                for index in range(size * size):
-                    art[index] = (round(random() * 255), round(random() * 255), round(random() * 255))
+                for index in range(size * size): art[index] = (round(random() * 255), round(random() * 255), round(random() * 255))
             if (event.key == pygame.K_w): showWatermark = not showWatermark
 
             if (event.key == pygame.K_c): complexMode = not complexMode
