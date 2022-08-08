@@ -1,3 +1,5 @@
+# Quixl uses the GNU General Public License v3.0, also known as GNU GPLv3. Check '/COPYING' for more information
+
 import math
 from random import random
 from threading import Thread
