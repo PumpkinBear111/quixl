@@ -18,14 +18,10 @@ running = True
 
 art = [()]*(size*size)
 
-print(art)
-
 i = -1
 for color in art:
     i += 1
     art[i] = (-1,-1,-1)
-
-print(art)
 
 mousedown = False
 rightmousedown = False
