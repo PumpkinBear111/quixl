@@ -16,13 +16,6 @@ pixelDisplaySize = 512/size
 
 running = True
 
-art = [()]*(size*size)
-
-i = -1
-for color in art:
-    i += 1
-    art[i] = (-1,-1,-1)
-
 mousedown = False
 rightmousedown = False
 
@@ -38,6 +31,8 @@ complexFont = pygame.font.SysFont("Roboto-Regular.ttf", 16)
 
 _watermark.init()
 
+_quixl.createData(screen)
+
 def createNew(width):
     global size, art, pixelDisplaySize
     size = width
@@ -49,6 +44,7 @@ def createNew(width):
         i += 1
         art[i] = (-1, -1, -1)
     print(f"New {width}x{width}")
+createNew(size)
 
 pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
 
@@ -59,7 +55,8 @@ def drawUpdate():
 
     while running:
         _quixl.optimizedScreenClear(screen, pygame.mouse.get_pos())
-        _quixl.drawUI(screen, colorSelection)
+        screen.blit(_quixl.data["displaybg"], (0,0))
+        _quixl.drawUI(screen, colorSelection, True)
         _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
         if pygame.mouse.get_focused(): _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
         if showWatermark: _watermark.draw(screen)
@@ -72,7 +69,9 @@ drawThread.start()
 
 while running:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT: running = False
+        if event.type == pygame.QUIT:
+            running = False
+            _quixl.onClose()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: mousedown = True
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1: mousedown = False
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3: rightmousedown = True
@@ -92,7 +91,9 @@ while running:
                 except(FileNotFoundError):
                     print("quixl.png could not be found")
             if (event.key == pygame.K_n or event.key == pygame.K_BACKSPACE or event.key == pygame.K_r or event.key == pygame.K_x): createNew(size)
-            if (event.key == pygame.K_ESCAPE): running = False
+            if (event.key == pygame.K_ESCAPE):
+                running = False
+                _quixl.onClose()
 
             if (event.key == pygame.K_1): createNew(4)
             if (event.key == pygame.K_2): createNew(8)
