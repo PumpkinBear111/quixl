@@ -84,6 +84,7 @@ while running:
                 colorSelection = art[index]
         if event.type == pygame.KEYDOWN:
             if (event.key == pygame.K_s): _quixl.saveImage(art, size)
+            if (event.key == pygame.K_e): _quixl.export(art, size)
             if (event.key == pygame.K_o):
                 try:
                     art, size, pixelDisplaySize = _quixl.openImage()

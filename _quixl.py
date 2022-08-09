@@ -255,3 +255,29 @@ def openImage():
             art[i] = (r, g, b)
 
     return (art, size, pixelDisplaySize)
+
+# Export
+def export(art, size):
+    from PIL import Image, ImageDraw
+    import os, time
+
+    dir = f"export-{round(time.time())}"
+    os.mkdir(dir)
+
+    exportSize = size
+    while exportSize <= 1024:
+        x = -(exportSize/size)
+        y = 0
+        img = Image.new('RGBA', (exportSize, exportSize))
+        draw = ImageDraw.Draw(img)
+        for pixel in art:
+            x += exportSize/size
+            if x >= exportSize:
+                x = 0
+                y += exportSize/size
+            if (pixel[0] == -1): draw.rectangle([(x, y), (x+exportSize/size,y+exportSize/size)], fill=(0, 0, 0, 0))
+            else: draw.rectangle([(x, y), (x+exportSize/size,y+exportSize/size)], fill=pixel)
+        img.save(f'{dir}/export-{exportSize}x{exportSize}.png')
+        exportSize *= 2
+
+    print(f"Exported to '/{dir}'")

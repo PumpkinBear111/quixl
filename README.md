@@ -31,6 +31,8 @@ The key(s) to press are in bold
 ### Basic Commands
 > Save - **s**  
 > Open - **o**  
+> Export - **e**  
+
 > Reset Canvas - **n**, **BACKSPACE**, **r**, or **n**  
 > Exit - **ESCAPE**  
 
