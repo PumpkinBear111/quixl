@@ -50,21 +50,18 @@ createNew(size)
 
 pygame.draw.rect(screen, (255,255,255), pygame.Rect(0,0,screen.get_width(),screen.get_height()))
 
-screenReset = False
-
 def drawUpdate():
-    global size, screen, pixelDisplaySize, running, art, mousedown, rightmousedown, colorSelection, showMiddle, showGrid, showAlpha, showWatermark, complexMode, complexFont, screenReset
+    global size, screen, pixelDisplaySize, running, art, mousedown, rightmousedown, colorSelection, showMiddle, showGrid, showAlpha, showWatermark, complexMode, complexFont
 
     while running:
         _quixl.optimizedScreenClear(screen, pygame.mouse.get_pos())
         screen.blit(_quixl.data["displaybg"], (0,0))
-        _quixl.drawUI(screen, colorSelection, True)
+        _quixl.drawUI(screen, colorSelection)
         _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
         if pygame.mouse.get_focused(): _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
         if showWatermark: _watermark.draw(screen)
         if complexMode: _quixl.drawComplex(screen, complexFont, colorSelection)
 
-        screenReset = False
         pygame.display.flip()
 drawThread = Thread(target=drawUpdate)
 drawThread.start()
@@ -121,7 +118,6 @@ while running:
                 colorSelection = (max(r - 10, 0), max(g - 10, 0), max(b - 10, 0))
             # if (event.key == pygame.K_a): showAlpha = not showAlpha
     if mousedown:
-        screenReset = True
         colorSelection = _quixl.colorPresetSelection(colorSelection)
         colorSelection = _quixl.colorSliderInput(colorSelection)
         art = _quixl.leftClickDraw(art, size, colorSelection)

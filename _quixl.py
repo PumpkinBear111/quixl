@@ -8,8 +8,8 @@ def createData(screen):
     import os
     import pygame
     global data
-    drawUI(screen, (0,0,0), False)
-    data["displaybg"] = screen
+    drawUIBG(screen)
+    data["displaybg"] = screen.copy()
 
 def onClose():
     #import os
@@ -46,32 +46,25 @@ def drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, sho
     if showMiddle:
         pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(256, 0, 2, 512))
         pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 256, 512, 2))
-def drawUI(screen, currentColor, live):
+def drawUIBG(screen):
     import pygame
 
-    if live:
-        pygame.draw.rect(screen, (200,200,200), pygame.Rect(512, 0, 1, 512))
+    pygame.draw.rect(screen, (255,255,255), pygame.Rect(512, 0, 275, 512))
 
-        pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(512 + 10 - 2, 8, 259, 184))
-        for i in range(255):
-            pygame.draw.rect(screen, (i, 0, 0), pygame.Rect(512+10+i, 10, 1, 45))
-            pygame.draw.rect(screen, (0, i, 0), pygame.Rect(512+10+i, 55, 1, 45))
-            pygame.draw.rect(screen, (0, 0, i), pygame.Rect(512+10+i, 100, 1, 45))
-            pygame.draw.rect(screen, (i, i, i), pygame.Rect(512+10+i, 145, 1, 45))
+    pygame.draw.rect(screen, (200,200,200), pygame.Rect(512, 0, 1, 512))
 
-    if not live:
-        cr, cg, cb = currentColor
-        pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cr, 10, 2, 45))
-        pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cg, 55, 2, 45))
-        pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 100, 2, 45))
-        if (cr == cg == cb): pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 145, 2, 45))
+    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(512 + 10 - 2, 8, 259, 184))
+    for i in range(255):
+        pygame.draw.rect(screen, (i, 0, 0), pygame.Rect(512+10+i, 10, 1, 45))
+        pygame.draw.rect(screen, (0, i, 0), pygame.Rect(512+10+i, 55, 1, 45))
+        pygame.draw.rect(screen, (0, 0, i), pygame.Rect(512+10+i, 100, 1, 45))
+        pygame.draw.rect(screen, (i, i, i), pygame.Rect(512+10+i, 145, 1, 45))
 
     border = (150,150,150)
     height = 200
 
     # Color Presets
 
-    if not live: return
     # Grayscale Selection
     pygame.draw.rect(screen, border, pygame.Rect(522, height, 50, 30))
     pygame.draw.rect(screen, (000,000,000), pygame.Rect(524, height+2, 46, 26))
@@ -123,6 +116,15 @@ def drawUI(screen, currentColor, live):
 
     # Non-Color UI
     pygame.draw.rect(screen, (150,150,150), pygame.Rect(522, 335, 255, 150))
+def drawUI(screen, currentColor):
+    import pygame
+
+    cr, cg, cb = currentColor
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cr, 10, 2, 45))
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cg, 55, 2, 45))
+    pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 100, 2, 45))
+    if (cr == cg == cb): pygame.draw.rect(screen, (255,255,0), pygame.Rect(522+cb, 145, 2, 45))
+    return
 def drawColorOverlay(screen, colorSelection, mousePos):
     if colorSelection == (-1,-1,-1): return
     import pygame
