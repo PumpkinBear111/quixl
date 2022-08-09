@@ -10,7 +10,7 @@ import _quixl, _watermark
 
 pygame.init()
 
-size = 16
+size = _quixl.getSizeFromConfig()
 screen = pygame.display.set_mode((787, 512))
 pygame.display.set_caption("quixl")
 

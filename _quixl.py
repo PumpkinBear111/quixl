@@ -281,3 +281,19 @@ def export(art, size):
         exportSize *= 2
 
     print(f"Exported to '/{dir}'")
+
+# Config
+def getSizeFromConfig():
+    import json
+    configFile = open("config.json")
+    config = json.load(configFile)
+    configFile.close()
+
+    if config["default-size"] == 1: return 4
+    if config["default-size"] == 2: return 8
+    if config["default-size"] == 3: return 16
+    if config["default-size"] == 4: return 32
+    if config["default-size"] == 5: return 64
+    if config["default-size"] == 6: return 128
+
+    return 8
