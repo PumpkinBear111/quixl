@@ -64,7 +64,6 @@ The default value/formatting of the current config.json file is the following:
 
     {
         "default-size": 3,
-        "starting-color": [0,0,0]
     }
 
 
