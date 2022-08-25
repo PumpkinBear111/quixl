@@ -32,7 +32,7 @@ The key(s) to press are in bold
 > Save - **s**  
 > Open - **o**  
 > Export - **e**  
-> Open Folder<sup>1</sup>  - **f**
+> Open Folder<sup>Windows Only</sup>  - **f**
 
 > Reset Canvas - **n**, **BACKSPACE**, **r**, or **n**  
 > Exit - **ESCAPE**  
@@ -64,7 +64,11 @@ To modify quixl's config, open config.json.
 The default value/formatting of the current config.json file is the following:
 
     {
-        "default-size": 3,
+      "default-size": 3,
+      "watermark": {
+        "text": "pay to see the full image",
+        "font-size": 50
+      }
     }
 
 
@@ -79,7 +83,9 @@ You can set this to the following:
 >64x64 - **5**  
 128x128 - **6**
 >
-> These are the same values as above in "Change Size Commands"
+> These are the same values as above in "Change Size Commands"  
 
-## Footnotes
-**1 - This feature is only available on Windows devices.**
+> **watermark** - If you enable the watermark, this will be the text and font-size displayed. There are two subvalues you can control here.  
+> They are listed as the following:
+>> **text** - The string of text shown as the watermark  
+> **font-size** - The font size used as a numeric value

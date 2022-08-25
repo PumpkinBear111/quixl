@@ -1,3 +1,7 @@
 {
-  "default-size": 3
+  "default-size": 3,
+  "watermark": {
+    "text": "pay to see the full image",
+    "font-size": 50
+  }
 }

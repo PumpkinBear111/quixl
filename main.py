@@ -1,4 +1,4 @@
-# Quixl uses the GNU General Public License v3.0, also known as GNU GPLv3. Check '/COPYING' for more information
+# Quixl uses the GNU General Public License v3.0, also known as GNU GPLv3. Check '[Install Directory]/COPYING' for more information
 
 import math
 from random import random
@@ -6,7 +6,7 @@ from threading import Thread
 
 import pygame
 
-import _quixl, _watermark
+from assets import _quixl, _watermark
 
 pygame.init()
 
@@ -29,7 +29,7 @@ showAlpha = True
 showWatermark = False
 
 complexMode = False
-complexFont = pygame.font.SysFont("Roboto-Regular.ttf", 16)
+complexFont = pygame.font.SysFont("assets\Roboto-Regular.ttf", 16)
 
 _watermark.init()
 
@@ -55,7 +55,7 @@ def drawUpdate():
 
     while running:
         _quixl.optimizedScreenClear(screen, pygame.mouse.get_pos())
-        screen.blit(_quixl.data["displaybg"], (0,0))
+        screen.blit(_quixl.data["displaybg"], (0, 0))
         _quixl.drawUI(screen, colorSelection)
         _quixl.drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha)
         if pygame.mouse.get_focused(): _quixl.drawColorOverlay(screen, colorSelection, pygame.mouse.get_pos())
