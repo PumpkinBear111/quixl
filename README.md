@@ -32,6 +32,7 @@ The key(s) to press are in bold
 > Save - **s**  
 > Open - **o**  
 > Export - **e**  
+> Open Folder<sup>1</sup>  - **f**
 
 > Reset Canvas - **n**, **BACKSPACE**, **r**, or **n**  
 > Exit - **ESCAPE**  
@@ -79,3 +80,6 @@ You can set this to the following:
 128x128 - **6**
 >
 > These are the same values as above in "Change Size Commands"
+
+## Footnotes
+**1 - This feature is only available on Windows devices.**

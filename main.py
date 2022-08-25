@@ -117,6 +117,14 @@ while running:
             if (event.key == pygame.K_LEFTBRACKET):
                 r, g, b = colorSelection
                 colorSelection = (max(r - 10, 0), max(g - 10, 0), max(b - 10, 0))
+
+            if (event.key == pygame.K_f):
+                import os, sys, subprocess
+                if sys.platform == "win32": subprocess.run(f'explorer "{os.getcwd()}"')
+                # I don't have a way to add MacOS support since I cannot test it. If you want to contribute feel free!
+                # I develop on Windows but I do have a Linux laptop so I will add a Linux version eventually. If you want to speed up this process feel free to contribute to this repository.
+                else: print("Unsupported/Undetermined OS")
+
             # if (event.key == pygame.K_a): showAlpha = not showAlpha
     if mousedown:
         colorSelection = _quixl.colorPresetSelection(colorSelection)
