@@ -115,7 +115,7 @@ def drawUIBG(screen):
     #pygame.draw.line(screen, arrowColor, (727, height+105), (722, height+100))
 
     # Non-Color UI
-    pygame.draw.rect(screen, (150,150,150), pygame.Rect(522, 335, 255, 150))
+    # pygame.draw.rect(screen, (150,150,150), pygame.Rect(522, 335, 255, 150))
 def drawUI(screen, currentColor):
     import pygame
 
