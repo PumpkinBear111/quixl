@@ -223,7 +223,7 @@ def saveImage(art, size):
     img.save('quixl.png')
     print("Image saved")
 
-    pygame.display.set_icon(pygame.image.load('../quixl.png'))
+    pygame.display.set_icon(pygame.image.load('quixl.png'))
 def openImage():
     import pygame
     from PIL import Image
@@ -232,8 +232,8 @@ def openImage():
     y = 0
     i = -1
 
-    img = Image.open("../quixl.png")
-    pygame.display.set_icon(pygame.image.load('../quixl.png'))
+    img = Image.open("quixl.png")
+    pygame.display.set_icon(pygame.image.load('quixl.png'))
 
     imgw, imgh = img.size
     print(imgw)

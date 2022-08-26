@@ -5,7 +5,12 @@ A pixel art maker written in python.
 I forgot pixel had an 'e' in it so I thought qui(ck-pi)xl
 but I like the name so I'm not changing it.
 
-## To run quixl
+## Installation
+A simple installer for all required packages is included. Just run 'installer.py', and wait for it to finish. It will automatically delete itself when complete.  
+This is optional, as you could install the required packages manually.  
+The installer needs python, obviously, and also needs pip installed.
+
+### To run quixl
 pygame and Pillow are required  
 Then, just run **main.py**
 
