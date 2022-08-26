@@ -19,8 +19,7 @@ def onClose():
 # Screen Draw
 def drawPixelGrid(screen, art, size, pixelDisplaySize, showMiddle, showGrid, showAlpha):
     import pygame
-    x = -1
-    y = 0
+    x, y = -1, 0
     for pixel in art:
         x += 1
         if x >= size:

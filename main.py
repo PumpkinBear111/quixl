@@ -1,35 +1,26 @@
 # Quixl uses the GNU General Public License v3.0, also known as GNU GPLv3. Check '[Install Directory]/COPYING' for more information
 
-import math
+import math, pygame
 from random import random
 from threading import Thread
-
-import pygame
-
 from assets import _quixl, _watermark
 
 pygame.init()
 
-size = _quixl.getSizeFromConfig()
-screen = pygame.display.set_mode((787, 512))
+size, screen = _quixl.getSizeFromConfig(), pygame.display.set_mode((787, 512))
 pygame.display.set_caption("quixl")
 
 pixelDisplaySize = 512/size
 
 running = True
 
-mousedown = False
-rightmousedown = False
+mousedown, rightmousedown = False, False
 
 colorSelection = (0,0,0)
 
-showMiddle = False
-showGrid = False
-showAlpha = True
-showWatermark = False
+showMiddle, showGrid, showAlpha, showWatermark = False, False, True, False
 
-complexMode = False
-complexFont = pygame.font.SysFont("assets\Roboto-Regular.ttf", 16)
+complexMode, complexFont = False, pygame.font.SysFont("assets\Roboto-Regular.ttf", 16)
 
 _watermark.init()
 
